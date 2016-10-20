@@ -33,15 +33,13 @@ function processStudy(study, table) {
     //TO DO - uncomment once FTP structure & Solr variable are available
 
     var fullpvalset = study.fullPvalueSet;
-    // var fullpvalset = 1;
 
     var pvalueflag = '';
 
-    if(fullpvalset == 1) {
+    if(!fullpvalset && study.associationCount > 20) {
         // var ftplink = "<a href='ftp://ftp.ebi.ac.uk/pub/databases/gwas' target='_blank'>";
 
-        var ftplink = "<a href='ftp://ftp.ebi.ac.uk/pub/databases/gwas/full_pvalue_sets/'"
-               .concat(study.pubmedId).concat(" target='_blank'</a>");
+        var ftplink = "<a href='ftp://ftp.ebi.ac.uk/pub/databases/gwas/full_pvalue_sets/'".concat(study.pubmedId).concat(" target='_blank'</a>");
 
         pvalueflag = ftplink.concat("<span class='glyphicon glyphicon-signal clickable context-help'" +
                         " data-toggle='tooltip'" +

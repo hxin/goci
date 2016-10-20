@@ -1,8 +1,4 @@
 /**
- * Created by Dani on 27/02/2015.
- */
-
-/**
  * Created by dwelter on 04/02/15.
  */
 

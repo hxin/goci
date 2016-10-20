@@ -26,10 +26,40 @@
                 <li th:classappend="${#httpServletRequest.getServletPath() == '/' ? 'active':''}"><a href="index.html" th:href="@{/}">Home
                     <span class="sr-only">(current)</span>
                 </a></li>
-                <li th:classappend="${#httpServletRequest.getServletPath() == '/search' ? 'active':''}"><a th:href="@{/search}">Search</a></li>
+                <li th:classappend="${#httpServletRequest.getServletPath() == '/search' ? 'active':''}" class="dropdown">
+                    <a th:href="@{/search}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Search<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/search}">Search home</a></li>
+                        <li><a th:href="@{/search/most-recent}">Most recent studies</a></li>
+                        <li><a th:href="@{/search/traits}">Full reported traits list</a></li>
+                    </ul>
+                </li>
                 <li th:classappend="${#httpServletRequest.getServletPath() == '/diagram' ? 'active':''}"><a th:href="@{/diagram}">Diagram</a></li>
-                <li th:classappend="${#httpServletRequest.getServletPath() == '/docs/downloads' ? 'active':''}" class="hidden-sm"><a th:href="@{/docs/downloads}">Download</a></li>
-                <li th:classappend="${#httpServletRequest.getServletPath() == '/docs' ? 'active':''}"><a th:href="@{/docs}">Help</a></li>
+                <li th:classappend="${#httpServletRequest.getServletPath() == '/docs/downloads' ? 'active':''}" class="hidden-sm dropdown">
+                    <a th:href="@{/docs/downloads}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Download<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/docs/downloads}">File downloads</a></li>
+                        <li><a th:href="@{/docs/diagram-downloads}">Diagram downloads</a></li>
+                        <li><a th:href="@{/downloads/full-pvalue-sets}">Full p-value sets</a></li>
+                        <li><a href="ftp://ftp.ebi.ac.uk/pub/databases/gwas" target="_blank">FTP (opens in new tab)</a></li>
+                    </ul>
+                </li>
+                <li th:classappend="${#httpServletRequest.getServletPath() == '/docs' ? 'active':''}" class="dropdown">
+                    <a th:href="@{/docs}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Help<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/docs}">Help home</a></li>
+                        <li><a th:href="@{/docs/faq}">FAQs</a></li>
+                        <li><a th:href="@{/docs/methods}">Methods</a></li>
+                        <li><a th:href="@{/docs/related-resources}">Related resources</a></li>
+                        <!--<li role="separator" class="divider"></li>-->
+                        <li><a th:href="@{/docs/abbreviations}">Abbreviations</a></li>
+                        <li><a th:href="@{/docs/ontology}">Ontology</a></li>
+                        <li><a th:href="@{/docs/programmatic-access}">Programmatic access</a></li>
+                    </ul>
+                </li>
                 <li th:classappend="${#httpServletRequest.getServletPath() == '/docs/about' ? 'active':''}" class="hidden-sm"><a th:href="@{/docs/about}">About</a></li>
 
                 <li>

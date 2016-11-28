@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -51,6 +52,23 @@ public class AssociationUploadService {
     protected Logger getLog() {
         return log;
     }
+
+    // This static method allow us to split the List in two different lists.
+    // The original list will contain the scientific data error. The xlsListError will contain the XLS errors.
+    public static List<AssociationUploadErrorView> splitByXLSError (List<AssociationUploadErrorView> originalList) {
+        List<AssociationUploadErrorView> xlsListError = new ArrayList<>();
+
+        for (Iterator<AssociationUploadErrorView> iterator = originalList.iterator(); iterator.hasNext();) {
+            AssociationUploadErrorView elem= iterator.next();
+            if (elem.getTypeError().equals("excel")) {
+                    xlsListError.add(elem);
+                    iterator.remove();
+            }
+        }
+
+        return xlsListError;
+    }
+
 
     @Autowired
     public AssociationUploadService(AssociationFileUploadService associationFileUploadService,
@@ -142,7 +160,7 @@ public class AssociationUploadService {
      * @param user        User that triggered event
      */
     private void createBatchUploadEvent(Study study, String description, SecureUser user) {
-        trackingOperationService.update(study, user, EventType.ASSOCIATION_BATCH_UPLOAD, description);
+        trackingOperationService.update(study, user, "ASSOCIATION_BATCH_UPLOAD", description);
         studyRepository.save(study);
     }
 
@@ -185,7 +203,8 @@ public class AssociationUploadService {
                                                      AssociationUploadErrorView associationUploadErrorView =
                                                              new AssociationUploadErrorView(rowValidationSummary.getRow().getRowNumber(),
                                                                                             validationError.getField(),
-                                                                                            validationError.getError(), validationError.getWarning());
+                                                                                            validationError.getError(), validationError.getWarning(),
+                                                                                            validationError.getTypeError());
                                                      errors.add(associationUploadErrorView);
                                                  }
         );
@@ -204,7 +223,8 @@ public class AssociationUploadService {
                                                    AssociationUploadErrorView associationUploadErrorView =
                                                            new AssociationUploadErrorView(associationSummary.getRowNumber(),
                                                                                           validationError.getField(),
-                                                                                          validationError.getError(), validationError.getWarning());
+                                                                                          validationError.getError(), validationError.getWarning(),
+                                                                                          validationError.getTypeError());
                                                    errors.add(associationUploadErrorView);
                                                }
         );

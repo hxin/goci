@@ -1,7 +1,9 @@
 package uk.ac.ebi.spot.goci;
 
-import org.apache.solr.client.solrj.SolrServer;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
+//import org.apache.solr.client.solrj.SolrServer;
+//import org.apache.solr.client.solrj.impl.HttpSolrServer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
@@ -22,14 +24,20 @@ import java.util.Collections;
 @Component
 public class SolrIndexerConfiguration {
     @NotNull @Value("${search.server}")
-    private String solrServer;
+    private String solrClient;
 
     @NotNull @Value("${efo.location}")
     private Resource efoResource;
 
-    @Bean SolrServer solrServer() {
+//    @Bean SolrServer solrServer() {
+//        // return new http solr server from "search.server" config element, but remove core name (probably /gwas)
+//        return new HttpSolrServer(solrServer.substring(0, solrServer.lastIndexOf('/')));
+//    }
+
+    @Bean SolrClient solrClient() {
         // return new http solr server from "search.server" config element, but remove core name (probably /gwas)
-        return new HttpSolrServer(solrServer.substring(0, solrServer.lastIndexOf('/')));
+        //updated from SolrServer to SolrClient followind deprecation of SolrServer
+        return new HttpSolrClient(solrClient.substring(0, solrClient.lastIndexOf('/')));
     }
 
     @Bean OntologyLoader ontologyLoader() {

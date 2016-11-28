@@ -24,6 +24,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/search/traits").setViewName("traitlist");
         registry.addViewController("/downloads/full-pvalue-sets").setViewName("full-pvalue-sets");
         registry.addRedirectViewController("/search/most-recent", "/search?query=*&amp;filter=recent");
+        registry.addViewController("/snp").setViewName("snp-page");
 
         // dynamically generated docs pages
         registry.addViewController("/docs").setViewName("docs");

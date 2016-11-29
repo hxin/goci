@@ -39,84 +39,56 @@
     <![endif]-->
 
     <script src="../static/js/console-plugin.js" th:src="@{js/console-plugin.js}"></script>
+
 </head>
 
 <body>
-
 
 <div th:include="fragments/header :: navbar"></div>
 
 <div th:include="fragments/header :: jumbotron"></div>
 
-
-<div class="container">
+<div class="container tight-to-top">
+    <ol class="breadcrumb background-color-complementary-accent">
+        <li><a href="../home">Home</a></li>
+        <!--<li><a href="../docs">Documentation</a></li>-->
+        <li class="active">Downloads</li>
+    </ol>
     <div class="row">
-        <a href="search.html" th:href="@{search}">
-            <div class="col-md-4 toplevel-view">
-                <h2 class="flaticon-search11 color-primary-bold">Search</h2>
 
-                <p>You can search the Catalog in a number of ways, including by trait, SNP identifier, study and
-                   gene. </p>
-            </div>
-        </a>
+        <h2>Downloads</h2>
 
-        <a href="about.html" th:href="@{about}">
-            <div class="col-md-4 toplevel-view">
-                <h2 class="flaticon-information9 color-primary-bold">About</h2>
-
-                <p>A description of the GWAS Catalog, including background and citation information.</p>
-            </div>
-        </a>
-
-        <a href="diagram.html" th:href="@{diagram}">
-            <div class="col-md-4 toplevel-view">
-                <h2 class="flaticon-image11 color-primary-bold">Diagram</h2>
-
-                <p>An interactive visualisation of all SNP-trait associations with genome-wide significance
-                   (p&le;5 x10<sup>-8</sup>). </p>
+        <p> The GWAS Catalog provides a number of download options </p>
 
 
-            </div>
-        </a>
+
 
     </div>
-
     <div class="row">
-        <a href="downloads" th:href="@{downloads}">
+        <a href="docs/file-downloads" th:href="@{docs/file-downloads}">
             <div class="col-md-4 toplevel-view">
-                <h2 class="flaticon-mailbox2 color-primary-bold">Download</h2>
+                <h2 class="flaticon-group17 color-primary-bold">File downloads</h2>
 
-                <p>Including a full copy of the GWAS Catalog in spreadsheet format and current and older versions of GWAS diagram in SVG format.</p>
+                <p>Full GWAS Catalog data files</p>
             </div>
         </a>
 
-        <a href="docs/methods" th:href="@{downloads/full-pvalue-sets}">
-            <div class="col-md-4 toplevel-view">
-                <h2 class="flaticon-statistics color-primary-bold">Full p-value sets<sup>NEW</sup></h2>
 
-                <p>A list of all studies for which summary statistics are available in the GWAS Catalog</p>
+        <a href="docs/diagram-downloads" th:href="@{docs/diagram-downloads}">
+            <div class="col-md-4 toplevel-view">
+                <h2 class="flaticon-statistics color-primary-bold">Diagram downloads</h2>
+
+                <p>Pre-filtered and historic version of the GWAS diagram</p>
             </div>
         </a>
-        <a href="docs/ontology" th:href="@{ancestry}">
+        <a th:href="@{/downloads/full-pvalue-sets}">
             <div class="col-md-4 toplevel-view">
-                <h2 class="flaticon-group12 color-primary-bold">Ancestry<sup>NEW</sup></h2>
+                <h2 class="flaticon-internet6 color-primary-bold">Full p-value sets</h2>
 
-                <p>Ancestry page</p>
+                <p>A list of studies for which full p-value sets (summary statistics) are available</p>
             </div>
         </a>
-    </div>
 
-    <div class="row" style="text-align: center" id="homepageStats">
-       <p> As of <span id="lastUpdateDate"></span>, the GWAS Catalog contains <span id="studyCount"></span> studies and <span id="associationCount"></span> unique SNP-trait associations.<br/> GWAS Catalog data is currently mapped to Genome Assembly <span id="genomeAssembly"></span> and dbSNP Build <span id="dbSNP"></span>.</p>
-    </div>
-
-    <div class="row" style="text-align: center">
-        <p><span style="text-decoration: underline">We'd love to hear from you!</span><br/>
-            To provide feedback or ask a question, contact the GWAS Catalog team on
-            <a href="mailto:gwas-info@ebi.ac.uk">gwas-info@ebi.ac.uk</a>.<br/>
-            If you think you've found a bug, take a look at our <a href="docs/known-issues"
-                                                                   th:href="@{docs/known-issues}">known issues page</a>
-        </p>
     </div>
 
     <hr/>

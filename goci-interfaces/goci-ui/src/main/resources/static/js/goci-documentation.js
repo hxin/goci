@@ -21,20 +21,30 @@ var loadDocumentation = function(pagename, content) {
 
         displayName = displayName.replace("-", " ");
 
-        if (displayName.toLowerCase() == "about") {
+        if (displayName.toLowerCase() == "methods" || displayName.toLowerCase() == "related resources" || displayName.toLowerCase() == "acknowledgements citations") {
             $("#help-item").removeClass("active");
             $("#downloads-item").removeClass("active");
             $("#about-item").addClass("active");
+            $("#about-crumb").show();
+            $("#docs-crumb").hide();
+            $("#downloads-crumb").hide();
         }
-        else if (displayName.toLowerCase() == "downloads") {
+        else if (displayName.toLowerCase() == "downloads" || displayName.toLowerCase() == "diagram downloads" || displayName.toLowerCase() == "full p-value sets" ) {
             $("#about-item").removeClass("active");
             $("#help-item").removeClass("active");
             $("#downloads-item").addClass("active");
+            $("#about-crumb").hide();
+            $("#docs-crumb").hide();
+            $("#downloads-crumb").show();
+
         }
         else {
             $("#about-item").removeClass("active");
             $("#downloads-item").removeClass("active");
             $("#help-item").addClass("active");
+            $("#about-crumb").hide();
+            $("#docs-crumb").show();
+            $("#downloads-crumb").hide();
         }
         $("#current-page").text(displayName);
 

@@ -25,11 +25,14 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/downloads/full-pvalue-sets").setViewName("full-pvalue-sets");
         registry.addRedirectViewController("/search/most-recent", "/search?query=*&amp;filter=recent");
         registry.addViewController("/snp").setViewName("snp-page");
+        registry.addViewController("/about").setViewName("about");
+        registry.addViewController("/ancestry").setViewName("ancestry");
+
 
         // dynamically generated docs pages
         registry.addViewController("/docs").setViewName("docs");
-        registry.addViewController("/docs/about").setViewName("docs-template");
-        registry.addViewController("/docs/downloads").setViewName("docs-template");
+        registry.addViewController("/docs/acknowledgements-citations").setViewName("docs-template");
+        registry.addViewController("/docs/file-downloads").setViewName("docs-template");
         registry.addViewController("/docs/diagram-downloads").setViewName("docs-template");
         registry.addViewController("/docs/faq").setViewName("docs-template");
         registry.addViewController("/docs/methods").setViewName("docs-template");

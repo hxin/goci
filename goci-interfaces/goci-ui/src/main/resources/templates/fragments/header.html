@@ -36,11 +36,12 @@
                     </ul>
                 </li>
                 <li th:classappend="${#httpServletRequest.getServletPath() == '/diagram' ? 'active':''}"><a th:href="@{/diagram}">Diagram</a></li>
-                <li th:classappend="${#httpServletRequest.getServletPath() == '/docs/downloads' ? 'active':''}" class="hidden-sm dropdown">
-                    <a th:href="@{/docs/downloads}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <li th:classappend="${#httpServletRequest.getServletPath() == '/downloads' ? 'active':''}" class="hidden-sm dropdown">
+                    <a th:href="@{/downloads}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Download<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a th:href="@{/docs/downloads}">File downloads</a></li>
+                        <li><a th:href="@{/downloads}">Downloads home</a></li>
+                        <li><a th:href="@{/docs/file-downloads}">File downloads</a></li>
                         <li><a th:href="@{/docs/diagram-downloads}">Diagram downloads</a></li>
                         <li><a th:href="@{/downloads/full-pvalue-sets}">Full p-value sets</a></li>
                         <li><a href="ftp://ftp.ebi.ac.uk/pub/databases/gwas" target="_blank">FTP (opens in new tab)</a></li>
@@ -52,15 +53,22 @@
                     <ul class="dropdown-menu">
                         <li><a th:href="@{/docs}">Help home</a></li>
                         <li><a th:href="@{/docs/faq}">FAQs</a></li>
-                        <li><a th:href="@{/docs/methods}">Methods</a></li>
-                        <li><a th:href="@{/docs/related-resources}">Related resources</a></li>
                         <!--<li role="separator" class="divider"></li>-->
                         <li><a th:href="@{/docs/abbreviations}">Abbreviations</a></li>
                         <li><a th:href="@{/docs/ontology}">Ontology</a></li>
                         <li><a th:href="@{/docs/programmatic-access}">Programmatic access</a></li>
                     </ul>
                 </li>
-                <li th:classappend="${#httpServletRequest.getServletPath() == '/docs/about' ? 'active':''}" class="hidden-sm"><a th:href="@{/docs/about}">About</a></li>
+                <li th:classappend="${#httpServletRequest.getServletPath() == '/about' ? 'active':''}" class="hidden-sm">
+                    <a th:href="@{/about}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        About<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/about}">About home</a></li>
+                        <li><a th:href="@{/docs/acknowledgements-citations}">Acknowledgements &amp; citations</a></li>
+                        <li><a th:href="@{/docs/methods}">Methods</a></li>
+                        <li><a th:href="@{/docs/related-resources}">Related resources</a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a class="icon" id="ebi-logo" href="http://www.ebi.ac.uk">
